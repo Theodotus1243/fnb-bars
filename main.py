@@ -97,7 +97,18 @@ class DropZone(QFrame):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("F&B's Bars")
+        
+        # Load version
+        try:
+            with open("VERSION", "r") as f:
+                self.version = f.read().strip()
+        except:
+            self.version = "dev"
+        
+        # Build number (will be injected by GitHub Actions or show 'local')
+        self.build_num = os.getenv("GITHUB_RUN_NUMBER", "local")
+        
+        self.setWindowTitle(f"F&B's Bars v{self.version}-b{self.build_num}")
         self.setMinimumSize(600, 400)
 
         # Default settings
