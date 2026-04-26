@@ -98,9 +98,15 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         
-        # Load version
+        # Load version safely using absolute path
         try:
-            with open("VERSION", "r") as f:
+            if hasattr(sys, '_MEIPASS'):
+                base_dir = sys._MEIPASS
+            else:
+                base_dir = os.path.dirname(os.path.abspath(__file__))
+                
+            version_path = os.path.join(base_dir, "VERSION")
+            with open(version_path, "r") as f:
                 self.version = f.read().strip()
         except:
             self.version = "dev"
