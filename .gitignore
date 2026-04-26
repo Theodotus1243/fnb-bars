@@ -13,7 +13,6 @@ __pycache__/
 # PyInstaller / Build
 build/
 dist/
-*.spec
 
 # IDE / Editor
 .vscode/
