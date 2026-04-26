@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Media / Testing Files
+*.mp3
+*.wav
+*.webm
+*.mp4
+
+# PyInstaller / Build
+build/
+dist/
+*.spec
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
