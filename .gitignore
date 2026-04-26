@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.md
+# Internal Documentation (Kept local)
+plan.md
+tasks.md
 
 # Media / Testing Files
 *.mp3
