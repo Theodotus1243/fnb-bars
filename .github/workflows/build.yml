@@ -66,3 +66,9 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Artifact (For testing)
+      uses: actions/upload-artifact@v4
+      with:
+        name: FnBs_Bars_Windows_Artifact
+        path: "dist/F&B's Bars"

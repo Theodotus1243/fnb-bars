@@ -146,8 +146,13 @@ def create_spectrum_video_generator(
     ffmpeg_path = get_ffmpeg_path()
     cmd = build_ffmpeg_cmd(ffmpeg_path, output_path, width, height, fps, preview)
     
+    # On Windows, prevent the FFmpeg console from popping up
+    creation_flags = 0
+    if sys.platform == "win32":
+        creation_flags = subprocess.CREATE_NO_WINDOW
+
     try:
-        pipe = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+        pipe = subprocess.Popen(cmd, stdin=subprocess.PIPE, creationflags=creation_flags)
     except FileNotFoundError:
         yield {"status": "error", "error_message": f"FFmpeg not found. Expected at: {ffmpeg_path}"}
         return
